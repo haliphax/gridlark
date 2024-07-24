@@ -1,14 +1,27 @@
 import eslint from "@eslint/js";
-import configPrettier from "eslint-config-prettier";
-import pluginVue from "eslint-plugin-vue";
 import tseslint from "typescript-eslint";
+import pluginVue from "eslint-plugin-vue";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 export default tseslint.config(
+	{
+		ignores: [".commitlint*", "dist/*", "eslint.config.mjs"],
+	},
 	eslint.configs.recommended,
 	...tseslint.configs.recommended,
 	...pluginVue.configs["flat/recommended"],
-	configPrettier,
 	{
-		ignores: ["dist/"],
+		plugins: {
+			"typescript-eslint": tseslint.plugin,
+		},
+		languageOptions: {
+			parserOptions: {
+				parser: tseslint.parser,
+				project: "./tsconfig.json",
+				extraFileExtensions: [".vue"],
+				sourceType: "module",
+			},
+		},
 	},
+	eslintConfigPrettier,
 );
