@@ -2,6 +2,7 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import express, { Request, Response } from "express";
 import { createHttpTerminator } from "http-terminator";
+import "reflect-metadata";
 
 const host = process.env.host ?? "localhost";
 const port = parseInt(process.env.port ?? "8000");
