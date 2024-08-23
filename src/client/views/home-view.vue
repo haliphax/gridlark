@@ -1,6 +1,6 @@
 <script setup lang="ts">
+	import DemoResponse from "@schema/demo-response";
 	import { Ref, ref } from "vue";
-	import DemoResponse from "../../schema/demo-response";
 
 	const success: Ref<boolean | null> = ref(null);
 

@@ -14,5 +14,12 @@ export default defineConfig({
 		sourcemap: process.env.DEBUG ? true : undefined,
 		target: "esnext",
 	},
+	resolve: {
+		alias: {
+			"@client": __dirname,
+			"@schema": resolve(__dirname, "../schema"),
+			"@server": resolve(__dirname, "../server"),
+		},
+	},
 	plugins: [pluginVue()],
 });

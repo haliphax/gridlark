@@ -1,7 +1,7 @@
+import MainApp from "@client/main-app.vue";
+import HomeView from "@client/views/home-view.vue";
 import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
-import MainApp from "./main-app.vue";
-import HomeView from "./views/home-view.vue";
 
 const router = createRouter({
 	history: createWebHistory(),
