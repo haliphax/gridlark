@@ -1,13 +1,7 @@
-<script lang="ts">
-	import { defineComponent } from "vue";
-
-	const MainApp = defineComponent({});
-
-	export default MainApp;
-</script>
-
 <template>
 	<div>
-		<RouterView></RouterView>
+		<Suspense>
+			<RouterView></RouterView>
+		</Suspense>
 	</div>
 </template>
