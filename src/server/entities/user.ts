@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
 
 @Unique("uq_user_fields", ["name", "email"])
 @Entity()
-export class User {
+export default class User {
 	@PrimaryGeneratedColumn()
 	id: number;
 
