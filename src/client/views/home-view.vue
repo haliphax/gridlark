@@ -4,7 +4,7 @@
 
 	const success: Ref<boolean | null> = ref(null);
 
-	await fetch("/api/test")
+	await fetch("http://localhost:8000/api/test")
 		.then((r) => r.json())
 		.then((d: DemoResponse) => (success.value = d.success))
 		.catch(() => (success.value = false));

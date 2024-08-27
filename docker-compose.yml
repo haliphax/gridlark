@@ -1,0 +1,41 @@
+version: "3"
+
+networks:
+  internal:
+  external:
+
+services:
+  api:
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    environment:
+      host: "0.0.0.0"
+    networks:
+      - external
+      - internal
+    ports:
+      - "8000:8000"
+
+  db:
+    image: "postgres:13-alpine"
+    environment:
+      POSTGRES_PASSWORD: "gridlark"
+      POSTGRES_USER: "gridlark"
+    networks:
+      - internal
+    volumes:
+      - "db:/var/lib/postgresql/data"
+
+  static:
+    image: "nginx"
+    networks:
+      - external
+      - internal
+    ports:
+      - "8888:80"
+    volumes:
+      - "./dist/html:/usr/share/nginx/html:ro"
+
+volumes:
+  db:

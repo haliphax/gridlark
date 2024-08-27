@@ -1,5 +1,6 @@
 import compression from "compression";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import express from "express";
 import { createHttpTerminator } from "http-terminator";
 import "reflect-metadata";
@@ -7,10 +8,12 @@ import routes from "./routes";
 
 // configure application
 const app = express();
-app.use(compression());
-app.use(express.json({ limit: "10mb" }));
-app.use(cookieParser());
-app.use(express.static("dist/html"));
+app
+	.use(cors({ origin: "*" }))
+	.use(compression())
+	.use(express.json({ limit: "10mb" }))
+	.use(cookieParser())
+	.use(express.static("dist/html"));
 
 // remove server info header
 app.disable("x-powered-by");
