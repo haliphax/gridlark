@@ -3,10 +3,10 @@ import User from "./entities/user";
 
 const dataSource = new DataSource({
 	type: "postgres",
-	host: "db",
-	username: "gridlark",
-	password: "gridlark",
-	database: "gridlark",
+	host: process.env.DB_HOST ?? "db",
+	username: process.env.DB_USER ?? "gridlark",
+	password: process.env.DB_PASS ?? "gridlark",
+	database: process.env.DB_NAME ?? "gridlark",
 	entities: [User],
 });
 
